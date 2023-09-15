@@ -1,7 +1,7 @@
 
 /**
  * timer Takes multiple numbers from the command line argv. The numbers entered set timers to go off at the specified number of seconds.
- * @param {string} timers Are entered into the command line argv.
+ * @param {string} timers Are entered from the command line argv.
  */
 const timer = function(timers) {
   // variables for timers
