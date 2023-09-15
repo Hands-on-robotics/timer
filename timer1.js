@@ -1,18 +1,29 @@
 
-
+/**
+ * timer Takes multiple numbers from the command line argv. The numbers entered set timers to go off at the specified number of seconds.
+ * @param {string} timers Are entered into the command line argv.
+ */
 const timer = function(timers) {
-  // timers to numbers
+  // variables for timers
   timers = process.argv.slice(2).map(Number);
   let lastTimerSetAt = 0;
-  // sound for setTimeouts
+  
+  // the sound for timers
   const playSound = () => process.stdout.write('.');
   
   // checks for edge cases
   const check = function (element) {
-    // if timer is number and no less than 0
+    // if timer is a number and no less than 0
     if (!isNaN(element) && element >= 0) {
       return true;
     }
+  };
+  
+  // to finish without any artifacts
+  const finish = function() {
+    setTimeout(() => {
+      process.stdout.write('\r \n');
+    }, lastTimerSetAt + 200);
   };
 
   // setting timers
@@ -28,10 +39,9 @@ const timer = function(timers) {
       lastTimerSetAt = time;
     }
   }
-
-  setTimeout(() => {
-    process.stdout.write('\r \n');
-  }, lastTimerSetAt + 200);
+  finish();
 };
 
-timer(process.argv);
+timer(process.argv); // Test Code
+
+module.export = timer;
